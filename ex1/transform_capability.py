@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 
+
 class TransformCapability(ABC):
-    transformado:bool
+    transformado: bool
 
     def __init__(self) -> None:
         self.transformado = False

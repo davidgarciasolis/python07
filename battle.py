@@ -1,8 +1,7 @@
-
 from ex0 import CreatureFactory, AquaFactory, FlameFactory
 
 
-def testing_factory(creature_factory:CreatureFactory) -> None:
+def testing_factory(creature_factory: CreatureFactory) -> None:
     creature_base = creature_factory.create_base()
     creature_evolved = creature_factory.create_evolved()
 
@@ -13,8 +12,10 @@ def testing_factory(creature_factory:CreatureFactory) -> None:
     print(creature_evolved.attack())
     print()
 
-def testing_battle(creature_factory_first:CreatureFactory, creature_factory_second:CreatureFactory) -> None:
-    factory_first:CreatureFactory = creature_factory_first
+
+def testing_battle(creature_factory_first: CreatureFactory,
+                   creature_factory_second: CreatureFactory) -> None:
+    factory_first: CreatureFactory = creature_factory_first
     creature_first = factory_first.create_base()
     factory_second: CreatureFactory = creature_factory_second
     creature_second = factory_second.create_base()
@@ -27,6 +28,7 @@ def testing_battle(creature_factory_first:CreatureFactory, creature_factory_seco
     print(creature_first.attack())
     print(creature_second.attack())
     print()
+
 
 def main() -> None:
     flame_factory = FlameFactory()

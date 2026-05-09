@@ -1,8 +1,9 @@
 from ex0.creature import Creature
 from .transform_capability import TransformCapability
 
+
 class Shiftling(Creature, TransformCapability):
-    skill:str
+    skill: str
 
     def __init__(self) -> None:
         Creature.__init__(self, "Shiftling", "Normal")
@@ -22,5 +23,3 @@ class Shiftling(Creature, TransformCapability):
     def revert(self) -> str:
         self.transformado = False
         return (f"{self.name} returns to normal.")
-    
-

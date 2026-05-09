@@ -2,6 +2,7 @@ from ex0 import CreatureFactory
 from .shiftling import Shiftling
 from .morphagon import Morphagon
 
+
 class TransformCreatureFactory(CreatureFactory):
 
     def create_base(self) -> Shiftling:

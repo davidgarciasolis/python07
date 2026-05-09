@@ -3,6 +3,7 @@ from .creature import Creature
 from .flameling import Flameling
 from .pyrodon import Pyrodon
 
+
 class FlameFactory(CreatureFactory):
 
     def create_base(self) -> Creature:

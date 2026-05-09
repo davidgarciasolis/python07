@@ -2,6 +2,7 @@ from ex0 import CreatureFactory
 from .sproutling import Sproutling
 from .bloomelle import Bloomelle
 
+
 class HealingCreatureFactory(CreatureFactory):
 
     def create_base(self) -> Sproutling:

@@ -1,8 +1,9 @@
 from ex0.creature import Creature
 from .transform_capability import TransformCapability
 
+
 class Morphagon(Creature, TransformCapability):
-    skill:str
+    skill: str
 
     def __init__(self) -> None:
         Creature.__init__(self, "Morphagon", "Normal/Dragon")

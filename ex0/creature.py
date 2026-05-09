@@ -2,10 +2,10 @@ from abc import ABC, abstractmethod
 
 
 class Creature(ABC):
-    name:str
-    type:str
+    name: str
+    type: str
 
-    def __init__(self, name:str, type:str) -> None:
+    def __init__(self, name: str, type: str) -> None:
         self.name = name
         self.type = type
 

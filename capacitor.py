@@ -1,5 +1,5 @@
-from ex0 import CreatureFactory
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
+
 
 def testing_creature_heal() -> None:
     healing_factory = HealingCreatureFactory()
@@ -15,6 +15,7 @@ def testing_creature_heal() -> None:
     print(creature_evolved.attack())
     print(creature_evolved.heal())
     print()
+
 
 def testing_creature_transform() -> None:
     transform_factory = TransformCreatureFactory()
@@ -34,9 +35,11 @@ def testing_creature_transform() -> None:
     print(creature_evolved.attack())
     print(creature_evolved.revert())
 
+
 def main() -> None:
     testing_creature_heal()
     testing_creature_transform()
+
 
 if __name__ == "__main__":
     main()

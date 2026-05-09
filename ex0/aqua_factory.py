@@ -3,6 +3,7 @@ from .creature import Creature
 from .aquabub import Aquabub
 from .torragon import Torragon
 
+
 class AquaFactory(CreatureFactory):
 
     def create_base(self) -> Creature:

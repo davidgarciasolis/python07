@@ -1,8 +1,9 @@
 from ex0.creature import Creature
 from .heal_capability import HealCapability
 
+
 class Sproutling(Creature, HealCapability):
-    skill:str
+    skill: str
 
     def __init__(self) -> None:
         super().__init__("Sproutling", "Grass")
