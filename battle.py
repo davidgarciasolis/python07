@@ -14,8 +14,10 @@ def testing_factory(creature_factory:CreatureFactory) -> None:
     print()
 
 def testing_battle(creature_factory_first:CreatureFactory, creature_factory_second:CreatureFactory) -> None:
-    creature_first = creature_factory_first.create_base()
-    creature_second = creature_factory_second.create_base()
+    factory_first:CreatureFactory = creature_factory_first
+    creature_first = factory_first.create_base()
+    factory_second: CreatureFactory = creature_factory_second
+    creature_second = factory_second.create_base()
 
     print("Testing battle")
     print(creature_first.describe())
