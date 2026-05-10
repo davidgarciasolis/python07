@@ -15,10 +15,11 @@ class AggressiveStrategy(BattleStrategy):
             return (False)
 
     def act(self, creature: Creature) -> None:
-        if isinstance(creature, TransformCapability):
-            print(creature.transform())
-            print(creature.attack())
-            print(creature.revert())
+        if self.is_valid(creature):
+            if (isinstance(creature, TransformCapability)):
+                print(creature.transform())
+                print(creature.attack())
+                print(creature.revert())
         else:
             raise ErrorStrategy(f"Invalid Creature '{creature.name}' "
                                 f"for this {self.name} strategy")

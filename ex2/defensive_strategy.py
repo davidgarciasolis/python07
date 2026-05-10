@@ -15,9 +15,10 @@ class DefensiveStrategy(BattleStrategy):
             return (False)
 
     def act(self, creature: Creature) -> None:
-        if isinstance(creature, HealCapability):
-            print(creature.attack())
-            print(creature.heal())
+        if self.is_valid(creature):
+            if isinstance(creature, HealCapability):
+                print(creature.attack())
+                print(creature.heal())
         else:
             raise ErrorStrategy(f"Invalid Creature '{creature.name}' "
                                 f"for this {self.name} strategy")
