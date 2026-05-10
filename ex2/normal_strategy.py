@@ -18,4 +18,4 @@ class NormalStrategy(BattleStrategy):
             print(creature.attack())
         else:
             raise ErrorStrategy(f"Invalid Creature '{creature.name}' "
-                            f"for this {self.name} strategy")
+                                f"for this {self.name} strategy")

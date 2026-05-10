@@ -55,7 +55,7 @@ def main() -> None:
     print(" [ (Flameling+Normal), (Healing+Defensive) ]")
     try:
         Tournament(oponents1)
-    except Exception as e:
+    except ErrorStrategy as e:
         print(f"Battle error, aborting tournament: {e}")
         print()
 
@@ -63,7 +63,7 @@ def main() -> None:
     print(" [ (Flameling+Aggressive), (Healing+Defensive) ]")
     try:
         Tournament(oponents2)
-    except Exception as e:
+    except ErrorStrategy as e:
         print(f"Battle error, aborting tournament: {e}")
         print()
 
@@ -71,7 +71,7 @@ def main() -> None:
     print("[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]")
     try:
         Tournament(oponents3)
-    except Exception as e:
+    except ErrorStrategy as e:
         print(f"Battle error, aborting tournament: {e}")
         print()
 
