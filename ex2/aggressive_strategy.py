@@ -1,4 +1,5 @@
 from .battle_strategy import BattleStrategy
+from .error_stategy import ErrorStrategy
 from ex0.creature import Creature
 from ex1.transform_capability import TransformCapability
 
@@ -19,5 +20,5 @@ class AggressiveStrategy(BattleStrategy):
             print(creature.attack())
             print(creature.revert())
         else:
-            raise Exception(f"Invalid Creature '{creature.name}' "
+            raise ErrorStrategy(f"Invalid Creature '{creature.name}' "
                             f"for this {self.name} strategy")

@@ -1,0 +1,3 @@
+
+class ErrorStrategy(Exception):
+    pass

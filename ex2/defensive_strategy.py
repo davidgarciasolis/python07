@@ -1,4 +1,5 @@
 from .battle_strategy import BattleStrategy
+from .error_stategy import ErrorStrategy
 from ex0.creature import Creature
 from ex1.heal_capability import HealCapability
 
@@ -18,5 +19,5 @@ class DefensiveStrategy(BattleStrategy):
             print(creature.attack())
             print(creature.heal())
         else:
-            raise Exception(f"Invalid Creature '{creature.name}' "
+            raise ErrorStrategy(f"Invalid Creature '{creature.name}' "
                             f"for this {self.name} strategy")
