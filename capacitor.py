@@ -2,6 +2,7 @@ from ex1 import HealingCreatureFactory, TransformCreatureFactory
 
 
 def testing_creature_heal() -> None:
+    """Muestra el comportamiento de una criatura con curación."""
     healing_factory = HealingCreatureFactory()
     creature_base = healing_factory.create_base()
     creature_evolved = healing_factory.create_evolved()
@@ -18,6 +19,7 @@ def testing_creature_heal() -> None:
 
 
 def testing_creature_transform() -> None:
+    """Muestra el comportamiento de una criatura transformable."""
     transform_factory = TransformCreatureFactory()
     creature_base = transform_factory.create_base()
     creature_evolved = transform_factory.create_evolved()
@@ -37,6 +39,7 @@ def testing_creature_transform() -> None:
 
 
 def main() -> None:
+    """Punto de entrada para las pruebas del módulo ex1."""
     testing_creature_heal()
     testing_creature_transform()
 

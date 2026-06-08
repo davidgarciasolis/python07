@@ -8,6 +8,7 @@ from ex2 import (AggressiveStrategy, DefensiveStrategy,
 def battle(first_oponent: tuple[CreatureFactory, BattleStrategy],
            second_oponent: tuple[CreatureFactory, BattleStrategy]
            ) -> None:
+    """Ejecuta un combate entre dos oponentes configurados."""
 
     first_creature = first_oponent[0].create_base()
     second_creature = second_oponent[0].create_base()
@@ -22,6 +23,7 @@ def battle(first_oponent: tuple[CreatureFactory, BattleStrategy],
 
 
 def Tournament(oponents: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
+    """Ejecuta un torneo con todos los emparejamientos posibles."""
     num_oponents = len(oponents)
 
     print("*** Tournament ***")
@@ -35,6 +37,7 @@ def Tournament(oponents: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
 
 
 def main() -> None:
+    """Punto de entrada para demostrar los torneos."""
     flame_factory = FlameFactory()
     aqua_Factory = AquaFactory()
     healing_factory = HealingCreatureFactory()
