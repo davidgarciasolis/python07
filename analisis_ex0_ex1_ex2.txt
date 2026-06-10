@@ -1,0 +1,146 @@
+Analisis de ejercicios - DataDeck Abstract Card Architecture
+============================================================
+
+Este documento resume la idea de cada ejercicio, las piezas principales
+de la implementacion y los puntos que conviene explicar en una correccion.
+
+
+EX0 - Abstract Factory basico
+-----------------------------
+
+Objetivo:
+- Introducir el patron Abstract Factory para crear familias de criaturas.
+- Separar la logica de creacion de la logica de uso.
+
+Estructura conceptual:
+- `Creature` es la clase abstracta base.
+- Define atributos comunes:
+  - `name`
+  - `type`
+- Expone:
+  - `attack()` como metodo abstracto.
+  - `describe()` como metodo concreto reutilizable.
+
+Clases concretas:
+- `Flameling` y `Pyrodon` forman la familia de fuego.
+- `Aquabub` y `Torragon` forman la familia de agua.
+- Cada una implementa `attack()` con su propio mensaje.
+
+Factories:
+- `CreatureFactory` define dos metodos abstractos:
+  - `create_base()`
+  - `create_evolved()`
+- `FlameFactory` crea `Flameling` y `Pyrodon`.
+- `AquaFactory` crea `Aquabub` y `Torragon`.
+
+Punto importante de correccion:
+- El paquete `ex0` debe exponer solo factories, no las criaturas concretas.
+- La salida de `battle.py` debe seguir el flujo:
+  - crear factory
+  - crear criatura base y evolucionada
+  - describir
+  - atacar
+  - enfrentar dos criaturas base
+
+Ideas para explicarlo:
+- La factory encapsula la construccion de una familia entera.
+- El cliente trabaja con la abstraccion, no con las clases concretas.
+
+
+EX1 - Capabilities separadas de Creature
+---------------------------------------
+
+Objetivo:
+- Introducir capacidades independientes de `Creature`.
+- Mostrar que una habilidad puede reutilizarse sin heredar de la clase base.
+
+Capacidades:
+- `HealCapability`
+  - define `heal()`.
+- `TransformCapability`
+  - define `transform()` y `revert()`.
+  - mantiene estado interno para que el ataque cambie segun la forma activa.
+
+Familia de curacion:
+- `Sproutling`
+- `Bloomelle`
+- Ambas heredan de `Creature` y `HealCapability`.
+- Forman la familia de curacion y salen por `HealingCreatureFactory`.
+
+Familia de transformacion:
+- `Shiftling`
+- `Morphagon`
+- Ambas heredan de `Creature` y `TransformCapability`.
+- Forman la familia de transformacion y salen por `TransformCreatureFactory`.
+
+Puntos importantes:
+- Las capacidades no heredan de `Creature`.
+- `TransformCapability` necesita estado persistente para cambiar el comportamiento de `attack()`.
+- `ex1` tampoco debe exponer las criaturas concretas, solo las factories.
+
+Ideas para explicarlo:
+- Esto separa el comportamiento "healar" o "transformar" de la identidad "Creature".
+- Es una aplicacion de composicion conceptual: la criatura adopta una capacidad.
+- La transformacion modifica el estado interno y, por eso, cambia el ataque.
+
+
+EX2 - Abstract Strategy para torneos
+-----------------------------------
+
+Objetivo:
+- Desacoplar el modo de combate de la criatura concreta.
+- Elegir la accion de combate con una estrategia.
+
+Interfaz base:
+- `BattleStrategy`
+- Define:
+  - `is_valid(creature)`
+  - `act(creature)`
+
+Estrategias concretas:
+- `NormalStrategy`
+  - valida cualquier `Creature`.
+  - solo llama a `attack()`.
+- `AggressiveStrategy`
+  - valida criaturas con `TransformCapability`.
+  - hace `transform()`, `attack()`, `revert()`.
+- `DefensiveStrategy`
+  - valida criaturas con `HealCapability`.
+  - hace `attack()` y luego `heal()`.
+
+Manejo de errores:
+- Si una criatura no es valida para la estrategia, `act()` lanza `ErrorStrategy`.
+- El mensaje debe dejar claro:
+  - la criatura invalida
+  - la estrategia usada
+
+Torneo:
+- `tournament.py` recibe una lista de tuplas:
+  - `(CreatureFactory, BattleStrategy)`
+- Cada oponente combina:
+  - como se crea la criatura
+  - como se comporta en combate
+- El torneo enfrenta cada oponente contra todos los demas una vez.
+
+Puntos importantes:
+- El torneo no necesita saber detalles de la criatura.
+- Solo coordina factories y estrategias.
+- La logica de validacion pertenece a la estrategia, no al torneo.
+
+Ideas para explicarlo:
+- Esto es Strategy: el comportamiento se selecciona en runtime.
+- La misma criatura puede actuar distinto segun la estrategia asociada.
+- El torneo funciona con abstracciones, no con tipos concretos.
+
+
+Resumen rapido para defensa oral
+--------------------------------
+
+- EX0: Abstract Factory para crear familias de criaturas.
+- EX1: separamos capacidades reutilizables de la clase base.
+- EX2: Strategy para decidir como combate cada criatura en un torneo.
+
+Frase corta que resume la evolucion:
+- En EX0 se crea.
+- En EX1 se le agregan capacidades.
+- En EX2 se decide como se usa cada criatura en combate.

@@ -5,11 +5,9 @@ from ex2 import (AggressiveStrategy, DefensiveStrategy,
                  ErrorStrategy)
 
 
-def battle(first_oponent: tuple[CreatureFactory, BattleStrategy],
-           second_oponent: tuple[CreatureFactory, BattleStrategy]
-           ) -> None:
-    """Ejecuta un combate entre dos oponentes configurados."""
-
+def fight(first_oponent: tuple[CreatureFactory, BattleStrategy],
+          second_oponent: tuple[CreatureFactory, BattleStrategy]
+          ) -> None:
     first_creature = first_oponent[0].create_base()
     second_creature = second_oponent[0].create_base()
 
@@ -17,13 +15,13 @@ def battle(first_oponent: tuple[CreatureFactory, BattleStrategy],
     print(first_creature.describe())
     print(" vs.")
     print(second_creature.describe())
+    print(" now fight!")
     first_oponent[1].act(first_creature)
     second_oponent[1].act(second_creature)
     print()
 
 
-def Tournament(oponents: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
-    """Ejecuta un torneo con todos los emparejamientos posibles."""
+def battle(oponents: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
     num_oponents = len(oponents)
 
     print("*** Tournament ***")
@@ -32,12 +30,15 @@ def Tournament(oponents: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
     for x in range(num_oponents):
         y = x + 1
         while y < num_oponents:
-            battle(oponents[x], oponents[y])
+            fight(oponents[x], oponents[y])
             y += 1
 
 
+def Tournament(oponents: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
+    battle(oponents)
+
+
 def main() -> None:
-    """Punto de entrada para demostrar los torneos."""
     flame_factory = FlameFactory()
     aqua_Factory = AquaFactory()
     healing_factory = HealingCreatureFactory()
@@ -57,7 +58,7 @@ def main() -> None:
     print("Tournament 0 (basic)")
     print(" [ (Flameling+Normal), (Healing+Defensive) ]")
     try:
-        Tournament(oponents1)
+        battle(oponents1)
     except ErrorStrategy as e:
         print(f"Battle error, aborting tournament: {e}")
         print()
@@ -65,7 +66,7 @@ def main() -> None:
     print("Tournament 1 (error)")
     print(" [ (Flameling+Aggressive), (Healing+Defensive) ]")
     try:
-        Tournament(oponents2)
+        battle(oponents2)
     except ErrorStrategy as e:
         print(f"Battle error, aborting tournament: {e}")
         print()
@@ -73,7 +74,7 @@ def main() -> None:
     print("Tournament 2 (multiple)")
     print("[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]")
     try:
-        Tournament(oponents3)
+        battle(oponents3)
     except ErrorStrategy as e:
         print(f"Battle error, aborting tournament: {e}")
         print()

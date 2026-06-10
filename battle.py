@@ -2,7 +2,6 @@ from ex0 import CreatureFactory, AquaFactory, FlameFactory
 
 
 def testing_factory(creature_factory: CreatureFactory) -> None:
-    """Muestra la forma base y evolucionada de una fábrica."""
     creature_base = creature_factory.create_base()
     creature_evolved = creature_factory.create_evolved()
 
@@ -16,7 +15,6 @@ def testing_factory(creature_factory: CreatureFactory) -> None:
 
 def testing_battle(creature_factory_first: CreatureFactory,
                    creature_factory_second: CreatureFactory) -> None:
-    """Muestra un combate simple entre dos criaturas base."""
     factory_first: CreatureFactory = creature_factory_first
     creature_first = factory_first.create_base()
     factory_second: CreatureFactory = creature_factory_second
@@ -33,7 +31,6 @@ def testing_battle(creature_factory_first: CreatureFactory,
 
 
 def main() -> None:
-    """Punto de entrada para las pruebas de fábrica y combate."""
     flame_factory = FlameFactory()
     aqua_Factory = AquaFactory()
 

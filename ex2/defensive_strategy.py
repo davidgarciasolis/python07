@@ -1,25 +1,20 @@
 from .battle_strategy import BattleStrategy
-from .error_stategy import ErrorStrategy
+from .error_strategy import ErrorStrategy
 from ex0.creature import Creature
 from ex1.heal_capability import HealCapability
 
 
 class DefensiveStrategy(BattleStrategy):
-    """Estrategia que exige criaturas con curación."""
-
     def __init__(self) -> None:
-        """Inicializa el nombre de la estrategia."""
         self.name = "defensive"
 
     def is_valid(self, creature: Creature) -> bool:
-        """Comprueba si la criatura puede curarse."""
         if isinstance(creature, HealCapability):
             return (True)
         else:
             return (False)
 
     def act(self, creature: Creature) -> None:
-        """Ataca y luego cura a la criatura."""
         if self.is_valid(creature):
             if isinstance(creature, HealCapability):
                 print(creature.attack())
